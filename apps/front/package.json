@@ -11,12 +11,15 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.47.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@pandacss/dev": "^0.45.0",
+    "@tanstack/router-devtools": "^1.47.1",
+    "@tanstack/router-plugin": "^1.47.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
