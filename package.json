@@ -1,0 +1,7 @@
+{
+  "name": "sport-log",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "pnpm --parallel run dev"
+  }
+}
