@@ -4,6 +4,8 @@ export default defineConfig({
   // Whether to use css reset
   preflight: true,
 
+  presets: ['@pandacss/preset-base', '@park-ui/panda-preset'],
+
   // Where to look for your css declarations
   include: ["./src/**/*.{ts,tsx}"],
 
@@ -15,7 +17,7 @@ export default defineConfig({
     extend: {},
   },
   
-  jsxStyleProps:'minimal',
+  // jsxStyleProps:'minimal',
   jsxFramework: 'react',
 
   // The output directory for your css system
