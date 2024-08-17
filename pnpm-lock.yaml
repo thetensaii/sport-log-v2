@@ -16,6 +16,9 @@ importers:
       '@tanstack/react-router':
         specifier: ^1.47.1
         version: 1.47.1(react-dom@18.3.1)(react@18.3.1)
+      lucide-react:
+        specifier: ^0.427.0
+        version: 0.427.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -3826,6 +3829,14 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /lucide-react@0.427.0(react@18.3.1):
+    resolution: {integrity: sha512-lv9s6c5BDF/ccuA0EgTdskTxIe11qpwBDmzRZHJAKtp8LTewAvDvOM+pTES9IpbBuTqkjiMhOmGpJ/CB+mKjFw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /magic-string@0.30.10:
     resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}

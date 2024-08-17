@@ -12,11 +12,35 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as authSignupImport } from './routes/(auth)/signup'
+import { Route as authLoginImport } from './routes/(auth)/login'
+import { Route as authCreateIndexImport } from './routes/(auth)/create/index'
+import { Route as authCreatePlayerImport } from './routes/(auth)/create/player'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authSignupRoute = authSignupImport.update({
+  path: '/signup',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authLoginRoute = authLoginImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authCreateIndexRoute = authCreateIndexImport.update({
+  path: '/create/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authCreatePlayerRoute = authCreatePlayerImport.update({
+  path: '/create/player',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -31,12 +55,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/(auth)/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof authLoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof authSignupImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/create/player': {
+      id: '/create/player'
+      path: '/create/player'
+      fullPath: '/create/player'
+      preLoaderRoute: typeof authCreatePlayerImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/create/': {
+      id: '/create/'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof authCreateIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  authLoginRoute,
+  authSignupRoute,
+  authCreatePlayerRoute,
+  authCreateIndexRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -46,11 +104,27 @@ export const routeTree = rootRoute.addChildren({ IndexRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/login",
+        "/signup",
+        "/create/player",
+        "/create/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/login": {
+      "filePath": "(auth)/login.tsx"
+    },
+    "/signup": {
+      "filePath": "(auth)/signup.tsx"
+    },
+    "/create/player": {
+      "filePath": "(auth)/create/player.tsx"
+    },
+    "/create/": {
+      "filePath": "(auth)/create/index.tsx"
     }
   }
 }
