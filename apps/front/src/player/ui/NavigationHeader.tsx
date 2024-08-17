@@ -8,7 +8,7 @@ export const NavigationHeader = () => {
       <NavigationLink to="/player/home">
         <Text size="xl">Accueil</Text>
       </NavigationLink>
-      <NavigationLink to="/create/player">
+      <NavigationLink to="/player/profile">
         <Text size="xl">Profil</Text>
       </NavigationLink>
     </ul>

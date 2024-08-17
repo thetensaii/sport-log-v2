@@ -18,6 +18,7 @@ import { Route as PlayerLayoutImport } from './routes/player/_layout'
 import { Route as authSignupImport } from './routes/(auth)/signup'
 import { Route as authLoginImport } from './routes/(auth)/login'
 import { Route as authCreateIndexImport } from './routes/(auth)/create/index'
+import { Route as PlayerLayoutProfileImport } from './routes/player/_layout.profile'
 import { Route as PlayerLayoutHomeImport } from './routes/player/_layout.home'
 import { Route as authCreatePlayerImport } from './routes/(auth)/create/player'
 
@@ -55,6 +56,11 @@ const authLoginRoute = authLoginImport.update({
 const authCreateIndexRoute = authCreateIndexImport.update({
   path: '/create/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const PlayerLayoutProfileRoute = PlayerLayoutProfileImport.update({
+  path: '/profile',
+  getParentRoute: () => PlayerLayoutRoute,
 } as any)
 
 const PlayerLayoutHomeRoute = PlayerLayoutHomeImport.update({
@@ -120,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlayerLayoutHomeImport
       parentRoute: typeof PlayerLayoutImport
     }
+    '/player/_layout/profile': {
+      id: '/player/_layout/profile'
+      path: '/profile'
+      fullPath: '/player/profile'
+      preLoaderRoute: typeof PlayerLayoutProfileImport
+      parentRoute: typeof PlayerLayoutImport
+    }
     '/(auth)/create/': {
       id: '/create/'
       path: '/create'
@@ -137,7 +150,10 @@ export const routeTree = rootRoute.addChildren({
   authLoginRoute,
   authSignupRoute,
   PlayerRoute: PlayerRoute.addChildren({
-    PlayerLayoutRoute: PlayerLayoutRoute.addChildren({ PlayerLayoutHomeRoute }),
+    PlayerLayoutRoute: PlayerLayoutRoute.addChildren({
+      PlayerLayoutHomeRoute,
+      PlayerLayoutProfileRoute,
+    }),
   }),
   authCreatePlayerRoute,
   authCreateIndexRoute,
@@ -178,7 +194,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "player/_layout.tsx",
       "parent": "/player",
       "children": [
-        "/player/_layout/home"
+        "/player/_layout/home",
+        "/player/_layout/profile"
       ]
     },
     "/create/player": {
@@ -186,6 +203,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/player/_layout/home": {
       "filePath": "player/_layout.home.tsx",
+      "parent": "/player/_layout"
+    },
+    "/player/_layout/profile": {
+      "filePath": "player/_layout.profile.tsx",
       "parent": "/player/_layout"
     },
     "/create/": {
