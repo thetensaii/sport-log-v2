@@ -6,6 +6,7 @@ import { RadioInput } from "../atom/RadioInput"
 import { CheckboxInput } from "../atom/CheckboxInput"
 import { Button } from "#/components/ui/button"
 import { css } from "styled-system/css"
+import { Link } from "@tanstack/react-router"
 
 export const CreatePlayer = () => {
   return (
@@ -30,7 +31,9 @@ export const CreatePlayer = () => {
             ]}
           />
         </Grid>
-        <Button>Créer mon profil</Button>
+        <Button asChild>
+          <Link to="/player/home">Créer mon profil</Link>
+        </Button>
       </form>
     </Container>
   )
