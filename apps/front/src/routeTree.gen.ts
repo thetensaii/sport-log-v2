@@ -18,9 +18,10 @@ import { Route as PlayerLayoutImport } from './routes/player/_layout'
 import { Route as authSignupImport } from './routes/(auth)/signup'
 import { Route as authLoginImport } from './routes/(auth)/login'
 import { Route as authCreateIndexImport } from './routes/(auth)/create/index'
-import { Route as PlayerLayoutProfileImport } from './routes/player/_layout.profile'
-import { Route as PlayerLayoutHomeImport } from './routes/player/_layout.home'
+import { Route as PlayerLayoutHomeImport } from './routes/player/_layout/home'
 import { Route as authCreatePlayerImport } from './routes/(auth)/create/player'
+import { Route as PlayerLayoutProfileIndexImport } from './routes/player/_layout/profile/index'
+import { Route as PlayerLayoutProfileEditImport } from './routes/player/_layout/profile/edit'
 
 // Create Virtual Routes
 
@@ -58,11 +59,6 @@ const authCreateIndexRoute = authCreateIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PlayerLayoutProfileRoute = PlayerLayoutProfileImport.update({
-  path: '/profile',
-  getParentRoute: () => PlayerLayoutRoute,
-} as any)
-
 const PlayerLayoutHomeRoute = PlayerLayoutHomeImport.update({
   path: '/home',
   getParentRoute: () => PlayerLayoutRoute,
@@ -71,6 +67,16 @@ const PlayerLayoutHomeRoute = PlayerLayoutHomeImport.update({
 const authCreatePlayerRoute = authCreatePlayerImport.update({
   path: '/create/player',
   getParentRoute: () => rootRoute,
+} as any)
+
+const PlayerLayoutProfileIndexRoute = PlayerLayoutProfileIndexImport.update({
+  path: '/profile/',
+  getParentRoute: () => PlayerLayoutRoute,
+} as any)
+
+const PlayerLayoutProfileEditRoute = PlayerLayoutProfileEditImport.update({
+  path: '/profile/edit',
+  getParentRoute: () => PlayerLayoutRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -126,19 +132,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlayerLayoutHomeImport
       parentRoute: typeof PlayerLayoutImport
     }
-    '/player/_layout/profile': {
-      id: '/player/_layout/profile'
-      path: '/profile'
-      fullPath: '/player/profile'
-      preLoaderRoute: typeof PlayerLayoutProfileImport
-      parentRoute: typeof PlayerLayoutImport
-    }
     '/(auth)/create/': {
       id: '/create/'
       path: '/create'
       fullPath: '/create'
       preLoaderRoute: typeof authCreateIndexImport
       parentRoute: typeof rootRoute
+    }
+    '/player/_layout/profile/edit': {
+      id: '/player/_layout/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/player/profile/edit'
+      preLoaderRoute: typeof PlayerLayoutProfileEditImport
+      parentRoute: typeof PlayerLayoutImport
+    }
+    '/player/_layout/profile/': {
+      id: '/player/_layout/profile/'
+      path: '/profile'
+      fullPath: '/player/profile'
+      preLoaderRoute: typeof PlayerLayoutProfileIndexImport
+      parentRoute: typeof PlayerLayoutImport
     }
   }
 }
@@ -152,7 +165,8 @@ export const routeTree = rootRoute.addChildren({
   PlayerRoute: PlayerRoute.addChildren({
     PlayerLayoutRoute: PlayerLayoutRoute.addChildren({
       PlayerLayoutHomeRoute,
-      PlayerLayoutProfileRoute,
+      PlayerLayoutProfileEditRoute,
+      PlayerLayoutProfileIndexRoute,
     }),
   }),
   authCreatePlayerRoute,
@@ -195,22 +209,27 @@ export const routeTree = rootRoute.addChildren({
       "parent": "/player",
       "children": [
         "/player/_layout/home",
-        "/player/_layout/profile"
+        "/player/_layout/profile/edit",
+        "/player/_layout/profile/"
       ]
     },
     "/create/player": {
       "filePath": "(auth)/create/player.tsx"
     },
     "/player/_layout/home": {
-      "filePath": "player/_layout.home.tsx",
-      "parent": "/player/_layout"
-    },
-    "/player/_layout/profile": {
-      "filePath": "player/_layout.profile.tsx",
+      "filePath": "player/_layout/home.tsx",
       "parent": "/player/_layout"
     },
     "/create/": {
       "filePath": "(auth)/create/index.tsx"
+    },
+    "/player/_layout/profile/edit": {
+      "filePath": "player/_layout/profile/edit.tsx",
+      "parent": "/player/_layout"
+    },
+    "/player/_layout/profile/": {
+      "filePath": "player/_layout/profile/index.tsx",
+      "parent": "/player/_layout"
     }
   }
 }

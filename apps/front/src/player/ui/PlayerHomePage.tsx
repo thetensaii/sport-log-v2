@@ -9,7 +9,7 @@ export const PlayerHomePage = () => {
       <Text as="h2" size="3xl" fontWeight="bold">Votre Profil a bien été créé !</Text>
       <Text as="p">Mais il nous manque quelques informations pour pouvoir 
       le rendre visible par des coachs !</Text>
-      <Text as="p">Allez sur votre <Link to='/player/home'>profil</Link> ajouter ces informations !</Text>
+      <Text as="p">Allez sur votre <Link to='/player/profile'>profil</Link> ajouter ces informations !</Text>
     </Container>
   )
 }
