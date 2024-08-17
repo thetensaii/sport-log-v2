@@ -13,11 +13,11 @@ const tabs: Tab[] = [
 export const EditPlayerProfilePage:React.FC = () => {
   return (
     <Container maxWidth="3xl">
-      <Tabs tabs={tabs} defaultTabId={tabs[0].id} size='lg' />
-  
       <Button asChild>
         <Link to='/player/profile'>Revenir au profil</Link>
       </Button>
+
+      <Tabs tabs={tabs} defaultTabId={tabs[0].id} size='lg' />
     </Container>
   )
 }
