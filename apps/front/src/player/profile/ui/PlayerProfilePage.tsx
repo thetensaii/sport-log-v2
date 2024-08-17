@@ -3,7 +3,7 @@ import { Text } from "#/components/ui/text"
 import { css } from "styled-system/css"
 import { Container, Grid } from "styled-system/jsx"
 
-export const PlayerProfile = () => {
+export const PlayerProfilePage = () => {
   return (
     <Container maxWidth="4xl">
       <Text as="p" size="2xl">Charles DUPONT</Text>

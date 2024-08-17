@@ -8,7 +8,7 @@ import { Button } from "#/components/ui/button"
 import { css } from "styled-system/css"
 import { Link } from "@tanstack/react-router"
 
-export const CreatePlayer = () => {
+export const CreatePlayerPage = () => {
   return (
     <Container maxWidth="3xl" height="lvh" marginTop={12}>
       <Text as="h2" size="4xl" className={css({marginBottom: 12})}>
