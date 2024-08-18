@@ -1,26 +1,23 @@
-import { Button } from "#/components/ui/button"
-import { FormLabel } from "#/components/ui/form-label"
-import { IconButton } from "#/components/ui/icon-button"
-import { Input } from "#/components/ui/input"
-import { DatePicker } from "@ark-ui/react"
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { css } from "styled-system/css"
+import { Button } from '#/components/ui/button';
+import { FormLabel } from '#/components/ui/form-label';
+import { IconButton } from '#/components/ui/icon-button';
+import { Input } from '#/components/ui/input';
+import { DatePicker } from '@ark-ui/react';
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { css } from 'styled-system/css';
 
 type Props = {
-  name: string
-  label: string
-}
+  name: string;
+  label: string;
+};
 
-export const DateInput:React.FC<Props> = ({ name, label }) => {
+export const DateInput: React.FC<Props> = ({ name, label }) => {
   return (
-    <DatePicker.Root
-      locale="fr"
-      selectionMode="single"
-    >
+    <DatePicker.Root locale="fr" selectionMode="single">
       <DatePicker.Label asChild>
         <FormLabel>{label}</FormLabel>
       </DatePicker.Label>
-      <DatePicker.Control className={css({display: "flex", gap: 2})}>
+      <DatePicker.Control className={css({ display: 'flex', gap: 2 })}>
         <DatePicker.Input asChild name={name}>
           <Input />
         </DatePicker.Input>
@@ -31,12 +28,14 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
         </DatePicker.Trigger>
       </DatePicker.Control>
       <DatePicker.Positioner>
-        <DatePicker.Content className={css({ p: 4, borderRadius:"md", shadow: "lg"})}>
+        <DatePicker.Content className={css({ p: 4, borderRadius: 'md', shadow: 'lg' })}>
           <DatePicker.View view="day">
             <DatePicker.Context>
               {(api) => (
                 <>
-                  <DatePicker.ViewControl className={css({display: "flex", justifyContent: "space-between", marginBottom: 4})}>
+                  <DatePicker.ViewControl
+                    className={css({ display: 'flex', justifyContent: 'space-between', marginBottom: 4 })}
+                  >
                     <DatePicker.PrevTrigger asChild>
                       <IconButton variant="ghost" size="sm">
                         <ChevronLeftIcon />
@@ -57,9 +56,7 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
                     <DatePicker.TableHead>
                       <DatePicker.TableRow>
                         {api.weekDays.map((weekDay, id) => (
-                          <DatePicker.TableHeader key={id}>
-                            {weekDay.narrow}
-                          </DatePicker.TableHeader>
+                          <DatePicker.TableHeader key={id}>{weekDay.narrow}</DatePicker.TableHeader>
                         ))}
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>
@@ -69,7 +66,9 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
                           {week.map((day, id) => (
                             <DatePicker.TableCell key={id} value={day}>
                               <DatePicker.TableCellTrigger asChild>
-                                <IconButton variant="ghost" type="button">{day.day}</IconButton>
+                                <IconButton variant="ghost" type="button">
+                                  {day.day}
+                                </IconButton>
                               </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
@@ -86,7 +85,9 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
             <DatePicker.Context>
               {(api) => (
                 <>
-                  <DatePicker.ViewControl className={css({display: "flex", justifyContent: "space-between", marginBottom: 4})}>
+                  <DatePicker.ViewControl
+                    className={css({ display: 'flex', justifyContent: 'space-between', marginBottom: 4 })}
+                  >
                     <DatePicker.PrevTrigger asChild>
                       <IconButton variant="ghost" size="sm">
                         <ChevronLeftIcon />
@@ -110,7 +111,9 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
                           {months.map((month, id) => (
                             <DatePicker.TableCell key={id} value={month.value}>
                               <DatePicker.TableCellTrigger asChild>
-                                <Button type="button" variant="ghost">{month.label}</Button>
+                                <Button type="button" variant="ghost">
+                                  {month.label}
+                                </Button>
                               </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
@@ -127,7 +130,9 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
             <DatePicker.Context>
               {(api) => (
                 <>
-                  <DatePicker.ViewControl className={css({display: "flex", justifyContent: "space-between", marginBottom: 4})}>
+                  <DatePicker.ViewControl
+                    className={css({ display: 'flex', justifyContent: 'space-between', marginBottom: 4 })}
+                  >
                     <DatePicker.PrevTrigger asChild>
                       <IconButton variant="ghost" size="sm">
                         <ChevronLeftIcon />
@@ -151,7 +156,9 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
                           {years.map((year, id) => (
                             <DatePicker.TableCell key={id} value={year.value}>
                               <DatePicker.TableCellTrigger asChild>
-                                <Button type="button" variant="ghost">{year.label}</Button>
+                                <Button type="button" variant="ghost">
+                                  {year.label}
+                                </Button>
                               </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
@@ -166,5 +173,5 @@ export const DateInput:React.FC<Props> = ({ name, label }) => {
         </DatePicker.Content>
       </DatePicker.Positioner>
     </DatePicker.Root>
-  )
-}
+  );
+};

@@ -1,19 +1,19 @@
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
-import { Select } from "./ui/select"
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
+import { Select } from './ui/select';
 
 type Option = {
-  value: string,
-  label: string,
-}
+  value: string;
+  label: string;
+};
 
 type Props = {
-  name: string
-  label: string
-  options: Option[]
-  placeholder?: string
-}
+  name: string;
+  label: string;
+  options: Option[];
+  placeholder?: string;
+};
 
-export const SelectInput:React.FC<Props> = ({ name, label, options, placeholder }) => {
+export const SelectInput: React.FC<Props> = ({ name, label, options, placeholder }) => {
   return (
     <Select.Root name={name} items={options}>
       <Select.Label>{label}</Select.Label>
@@ -36,5 +36,5 @@ export const SelectInput:React.FC<Props> = ({ name, label, options, placeholder 
         </Select.Content>
       </Select.Positioner>
     </Select.Root>
-  )
-}
+  );
+};
