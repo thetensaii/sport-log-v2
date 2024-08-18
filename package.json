@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "pnpm --parallel run dev",
-    "lint": "pnpm --parallel run lint"
+    "lint": "pnpm --parallel run lint",
+    "db:up": "pnpm --filter back run db:up",
+    "db:down": "pnpm --filter back run db:down",
+    "db:migrations:run": "pnpm --filter back run db:migrations:run",
+    "db:migrations:seed": "pnpm --filter back run db:migrations:seed"
   }
 }
